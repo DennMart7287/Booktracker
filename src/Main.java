@@ -15,6 +15,7 @@ public class Main {
             System.out.println("6. Total pages read");
             System.out.println("7. Count users who read more than one book");
             System.out.println("8. Add 'Name' column to User table");
+            System.out.println("9. Import data from CSV files");
             System.out.println("0. Exit");
             System.out.print("Choose an option: ");
 
@@ -53,6 +54,14 @@ public class Main {
                 case 6 -> StatisticsManager.getTotalPagesRead();
                 case 7 -> StatisticsManager.getUsersWithMultipleBooks();
                 case 8 -> UserManager.addNameColumnIfNotExists();
+                case 9 -> {
+                    System.out.print("Enter path to users.csv: ");
+                    String usersPath = scanner.nextLine();
+                    System.out.print("Enter path to reading_habits.csv: ");
+                    String habitsPath = scanner.nextLine();
+                    CSVImporter.importUsersFromCSV(usersPath);
+                    CSVImporter.importReadingHabitsFromCSV(habitsPath);
+                }
                 case 0 -> {
                     System.out.println("Goodbye!");
                     return;
